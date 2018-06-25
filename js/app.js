@@ -11,10 +11,15 @@ var cards = [ 'fa-diamond', 'fa-diamond',
 'fa-bomb','fa-bomb',
 'fa-leaf', 'fa-leaf',
 'fa-bicycle','fa-bicycle',
-
-];
+            ];
 //function that generates the cards in html format
 function generateCard(card) {
+  /*
+  here I am trying to figure out the value of ${card}
+  var i = 'fa ${card}';
+  console.log (i);
+  returns undefined 16 times
+  */
  return '<li class="card"><i class= "fa ${card}"></i></li>';
 }
 
@@ -81,6 +86,12 @@ function startGame() {
    var cardHTML = cards.map(function(card){
     return generateCard(card);
   });
+
+  console.log (cardHTML);
+  // this shows the html for card - i shows class of ${card}
+  // i should have the value of each card example fa-bolt
+  
+
   //this is where we put the value of the cards into the deck
   deck.innerHTML = cardHTML.join('');
 }
@@ -97,6 +108,9 @@ allCards.forEach(function(card) {
     openCards.push(card);
 	  card.classList.add('open','show');
 
+     //check if they match
+     var firstCardType = openCards[0].dataset.card;
+     console.log(firstCardType);
 
 
      //if cards don't match - cards turn back
