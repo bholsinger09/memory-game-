@@ -20,7 +20,7 @@ function generateCard(card) {
   console.log (i);
   returns undefined 16 times
   */
- return '<li class="card"><i class= "fa ${card}"></i></li>';
+ return `<li class="card"><i class= "fa ${card}"></i></li>`;
 }
 
 
@@ -90,7 +90,7 @@ function startGame() {
   console.log (cardHTML);
   // this shows the html for card - i shows class of ${card}
   // i should have the value of each card example fa-bolt
-  
+
 
   //this is where we put the value of the cards into the deck
   deck.innerHTML = cardHTML.join('');
