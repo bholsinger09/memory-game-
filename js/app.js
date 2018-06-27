@@ -77,6 +77,7 @@ function shuffle(array) {
 
 //this is where the game fuction to generate the card is created
 function startGame() {
+
    var deck = document.querySelector('.deck');
    var cardHTML = shuffle(cards).map(function(card){
     return generateCard(card);
@@ -90,11 +91,12 @@ function startGame() {
   deck.innerHTML = cardHTML.join('');
 }
 
+
 startGame();
+
 
 var allCards = document.querySelectorAll('.card');
 var openCards = [];
-
 allCards.forEach(function(card) {
   card.addEventListener('click',function(e) {
 
