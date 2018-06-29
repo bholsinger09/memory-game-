@@ -97,6 +97,38 @@ startGame();
 
 var allCards = document.querySelectorAll('.card');
 var openCards = [];
+
+function matched() {
+  //first card
+   openCards[0].classList.add('match');
+   openCards[0].classList.add('open');
+   openCards[0].classList.add('show');
+  //second card
+  openCards[1].classList.add('match');
+  openCards[1].classList.add('open');
+  openCards[1].classList.add('show');
+
+  openCards = [];
+
+
+}
+
+function unmatched(){
+  setTimeout(function() {
+        openCards.forEach(function(card) {
+        card.classList.remove('open', 'show');
+                             });
+                     openCards = [];
+                      }, 1000);
+
+
+
+}
+
+
+
+
+
 allCards.forEach(function(card) {
   card.addEventListener('click',function(e) {
 
@@ -108,30 +140,21 @@ allCards.forEach(function(card) {
 
 
      //checking matches
+
 	   if (openCards.length == 2){
        if (openCards[0].dataset.card == openCards[1].dataset.card){
-        //first card
-         openCards[0].classList.add('match');
-         openCards[0].classList.add('open');
-         openCards[0].classList.add('show');
-        //second card
-        openCards[1].classList.add('match');
-        openCards[1].classList.add('open');
-        openCards[1].classList.add('show');
+       matched();
+      }
 
-        openCards = [];
-      } else {
+       else {
 
       //if no match - card flips back
-	     setTimeout(function() {
-             openCards.forEach(function(card) {
-		         card.classList.remove('open', 'show');
-		                              });
-                          openCards = [];
-                           }, 1000);
+      unmatched();
+
                      }
 		            }
            }
 
              });
+
          });
