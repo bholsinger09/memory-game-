@@ -12,6 +12,18 @@ var cards = [ 'fa-diamond', 'fa-diamond',
 'fa-leaf', 'fa-leaf',
 'fa-bicycle','fa-bicycle',
             ];
+
+
+
+
+
+
+
+
+
+
+
+
 //function that generates the cards in html format
 function generateCard(card) {
 
@@ -97,28 +109,14 @@ startGame();
 
 var allCards = document.querySelectorAll('.card');
 var openCards = [];
+// declaring move variable
+let moves = 0;
+let counter = document.querySelector(".moves");
 
 
-//disable cards temporarily
-/*
-function disable(){
-    Array.prototype.filter.call(cards, function(card){
-        card.classList.add('disabled');
-    });
-}
-*/
-//enable cards and disable matched cards
-/* function enable(){
-    Array.prototype.filter.call(cards, function(card){
-        card.classList.remove('disabled');
-        for(var i = 0; i < openCards.length; i++){
-            matchedCard[i].classList.add("disabled");
-        }
-    });
-}
-*/
 
-function matched( {
+
+function matched() {
   //first card
    openCards[0].classList.add('match');
    openCards[0].classList.add('open');
@@ -131,18 +129,63 @@ function matched( {
   openCards = [];
 
 
-});
+}
 
-function unmatched({
+function unmatched(){
     setTimeout(function() {
         openCards.forEach(function(card) {
         card.classList.remove('open', 'show');
                              });
              openCards = [];
                       }, 1000);
-                    });
+                    }
 
 
+
+function moveCounter(){
+                        moves++;
+                        counter.innerHTML = moves;
+                        //start timer on first click
+                        if(moves == 1){
+                            second = 0;
+                            minute = 0;
+                            hour = 0;
+                            startTimer();
+                        }
+                        // setting rates based on moves
+                        if (moves > 8 && moves < 12){
+                            for( i= 0; i < 3; i++){
+                                if(i > 1){
+                                    stars[i].style.visibility = "collapse";
+                                }
+                            }
+                        }
+                        else if (moves > 13){
+                            for( i= 0; i < 3; i++){
+                                if(i > 0){
+                                    stars[i].style.visibility = "collapse";
+                                }
+                            }
+                        }
+                    }
+
+      var second = 0, minute = 0; hour = 0;
+      var timer = document.querySelector(".timer");
+      var interval;
+                    function startTimer(){
+                        interval = setInterval(function(){
+                            timer.innerHTML = minute+"mins "+second+"secs";
+                            second++;
+                            if(second == 60){
+                                minute++;
+                                second=0;
+                            }
+                            if(minute == 60){
+                                hour++;
+                                minute = 0;
+                            }
+                        },1000);
+                    }
 
 
 
@@ -161,6 +204,7 @@ allCards.forEach(function(card) {
      //checking matches
 
 	   if (openCards.length == 2){
+       moveCounter();
        if (openCards[0].dataset.card == openCards[1].dataset.card){
        matched();
       }
