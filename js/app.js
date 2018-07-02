@@ -98,7 +98,27 @@ startGame();
 var allCards = document.querySelectorAll('.card');
 var openCards = [];
 
-function matched() {
+
+//disable cards temporarily
+/*
+function disable(){
+    Array.prototype.filter.call(cards, function(card){
+        card.classList.add('disabled');
+    });
+}
+*/
+//enable cards and disable matched cards
+/* function enable(){
+    Array.prototype.filter.call(cards, function(card){
+        card.classList.remove('disabled');
+        for(var i = 0; i < openCards.length; i++){
+            matchedCard[i].classList.add("disabled");
+        }
+    });
+}
+*/
+
+function matched( {
   //first card
    openCards[0].classList.add('match');
    openCards[0].classList.add('open');
@@ -111,19 +131,18 @@ function matched() {
   openCards = [];
 
 
-}
+});
 
-function unmatched(){
-  setTimeout(function() {
+function unmatched({
+    setTimeout(function() {
         openCards.forEach(function(card) {
         card.classList.remove('open', 'show');
                              });
-                     openCards = [];
+             openCards = [];
                       }, 1000);
+                    });
 
 
-
-}
 
 
 
