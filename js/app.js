@@ -26,7 +26,7 @@ function generateCard(card) {
   return `<li class="card" data-card="${card}"><i class= "fa ${card}"></i></li>`;
 }
 
-var allCards = document.querySelectorAll(".card");
+var allCards ;
 var openCards = [];
 // declaring move variable
 let moves = 0;
@@ -109,23 +109,17 @@ function matched() {
 }
 
 function unmatched() {
-  disable();
+
   setTimeout(function() {
     openCards.forEach(function(card) {
       card.classList.remove("open", "show");
     });
-    enable();
+
     openCards = [];
   }, 1000);
 }
 
 
-function disable(){
-allCards.style.pointer-events= "none";
-}
-funtion enable() {
-allCards.style.pointer-events= "auto";
-}
 
 
 
@@ -179,20 +173,21 @@ function startTimer() {
 }
 
 
-//this event is not occuring -bug
+
 allCards.forEach(function(card) {
   card.addEventListener("click", function(e) {
-    if (
-      !card.classList.contains("open") &&
-      !card.classList.contains("show") &&
-      !card.classList.contains("match")
-    ) {
-      openCards.push(card);
-      card.classList.add("open", "show");
+    if (card.classList.contains("open")) {
+       return;
+       }
+       if (!card.classList.contains("open") && openCards.length < 2) {
+                    openCards.push(card);
+                    card.classList.add("open","show");
+                    console.log('card clicked');
+       }
+       if (openCards.length == 2 && card.classList.contains("open")) {
+          console.log('move incremented');
+//script is stopping here
 
-      //checking matches
-
-      if (openCards.length == 2) {
         moveCounter();
         if (openCards[0].dataset.card == openCards[1].dataset.card) {
           matched();
@@ -201,6 +196,6 @@ allCards.forEach(function(card) {
           unmatched();
         }
       }
-    }
+
   });
 });
