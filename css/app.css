@@ -145,6 +145,7 @@ h1 {
 	margin-top: 0;
 	color: #333;
 	font-family: Tahoma, Arial, sans-serif;
+  text-align:center;
 }
 
 .congratsPop .close {
@@ -170,8 +171,8 @@ h1 {
 }
 
 .show {
-	visibility: visible !important;
-	opacity: 100 !important;
+	visibility: visible ;
+	opacity: 100 ;
 }
 
 #starRating li {

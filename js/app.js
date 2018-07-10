@@ -34,6 +34,14 @@ let counter = document.querySelector(".moves");
 //declaring stars variable
 const stars = document.querySelectorAll(".fa-star");
 
+// declare matchedCards
+let matchedCard = document.getElementsByClassName("match");
+
+// close modal
+ let closePop = document.querySelector(".close");
+
+ // declare modal
+ let modal = document.getElementById("mainPopup")
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -172,6 +180,53 @@ function startTimer() {
   }, 1000);
 }
 
+function congratulations(){
+    if (matchedCard.length == 16){
+        clearInterval(interval);
+        finalTime = timer.innerHTML;
+
+        // show congratulations modal
+        modal.classList.add("show");
+
+        // declare star rating variable
+        var starRating = document.querySelector(".stars").innerHTML;
+
+        //showing move, rating, time on modal
+        document.getElementById("finalMove").innerHTML = moves;
+        document.getElementById("starRating").innerHTML = starRating;
+        document.getElementById("totalTime").innerHTML = finalTime;
+
+        //closeicon on modal
+
+        closeModal();
+    };
+}
+
+function closeModal(){
+    closePop.addEventListener("click", function(e){
+        modal.classList.remove("show");
+        startGame();
+    });
+}
+
+function playAgain(){
+    modal.classList.remove("show");
+    startGame();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 allCards.forEach(function(card) {
@@ -186,7 +241,7 @@ allCards.forEach(function(card) {
        }
        if (openCards.length == 2 && card.classList.contains("open")) {
           console.log('move incremented');
-//script is stopping here
+
 
         moveCounter();
         if (openCards[0].dataset.card == openCards[1].dataset.card) {
@@ -196,6 +251,12 @@ allCards.forEach(function(card) {
           unmatched();
         }
       }
+
+    congratulations();
+
+
+
+
 
   });
 });
