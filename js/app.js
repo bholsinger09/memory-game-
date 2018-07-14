@@ -110,12 +110,14 @@ function moveCounter() {
   moves++;
   counter.innerHTML = moves;
   //start timer on first click
+  /*
   if (moves == 1) {
     second = 0;
     minute = 0;
     hour = 0;
     startTimer();
-  }
+  } */
+
   // setting rates based on moves
   if (moves > 8 && moves < 12) {
     for (i = 0; i < 3; i++) {
@@ -132,13 +134,26 @@ function moveCounter() {
   }
 }
 
-var second = 0,
-  minute = 0,
-  hour = 0;
+
 
 var timer = document.querySelector(".timer");
 var interval;
+//here is where I set the time to 0
+let second = 0,
+  minute = 0,
+  hour = 0;
+
+function clearTimer() {
+
+  clearInterval(interval);
+  timer.innerHTML = minute + "mins " + second + "secs";
+
+}
+
+
 function startTimer() {
+
+
   interval = setInterval(function() {
     timer.innerHTML = minute + "mins " + second + "secs";
     second++;
@@ -149,9 +164,13 @@ function startTimer() {
     if (minute == 60) {
       hour++;
       minute = 0;
+    } else {
+      clearTimer();
     }
   }, 1000);
 }
+
+
 
 function congratulations() {
   if (matchedCard.length == 16) {
@@ -188,6 +207,7 @@ function playAgain() {
 }
 
 function useCards() {
+  startTimer(); //this starts the timer when page is first loaded
   allCards.forEach(function cardFlip(card) {
     card.addEventListener("click", function(e) {
       if (card.classList.contains("open")) {
@@ -197,6 +217,7 @@ function useCards() {
         openCards.push(card);
         card.classList.add("open", "show");
         console.log("card clicked");
+
       }
       if (openCards.length == 2 && card.classList.contains("open")) {
         console.log("move incremented");
@@ -234,5 +255,7 @@ function startGame() {
     stars[i].style.color = "#FFD700";
     stars[i].style.visibility = "visible";
   }
+
   useCards();
+
 }
