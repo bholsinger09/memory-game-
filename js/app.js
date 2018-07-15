@@ -150,6 +150,17 @@ function clearTimer() {
 
 }
 
+function resets() {
+   startGame();
+   second = 0;
+   minute = 0;
+   hour = 0;
+   clearTimer();
+   startTimer();
+
+ 
+}
+
 
 function startTimer() {
 
@@ -197,13 +208,18 @@ function congratulations() {
 function closeModal() {
   closePop.addEventListener("click", function(e) {
     modal.classList.remove("show");
-    startGame();
+    resets();
   });
 }
 
 function playAgain() {
   modal.classList.remove("show");
   startGame();
+   second = 0;
+   minute = 0;
+   hour = 0;
+   clearTimer();
+   startTimer();
 }
 
 function useCards() {
