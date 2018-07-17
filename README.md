@@ -6,15 +6,19 @@
 * [Contributing](#contributing)
 
 ## Instructions
+Turn over any two cards.
+If the two cards match, the they will stay open.
+If they don't match then the unmatched cards will flip back.
+Remember what was on each card and where it was.
+The game is over when all the cards have been matched.
+When complete the page will display how many moves made in the amount of time done.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
 ## Contributing
+Contributing
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+Please note there is a code of conduct, please follow it in all your interactions with the project.
+
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).

@@ -2,24 +2,29 @@
  * Create a list that holds all of your cards
  */
 
-var cards = [
+var cardFr = [
   "fa-diamond",
-  "fa-diamond",
+
   "fa-paper-plane-o",
-  "fa-paper-plane-o",
+
   "fa-anchor",
-  "fa-anchor",
+
   "fa-bolt",
-  "fa-bolt",
+
   "fa-cube",
-  "fa-cube",
+
   "fa-bomb",
-  "fa-bomb",
+
   "fa-leaf",
-  "fa-leaf",
+
   "fa-bicycle",
-  "fa-bicycle"
+
 ];
+var cardBk = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-bomb", "fa-leaf", "fa-bicycle",
+
+];
+
+var cards = (cardFr.concat(cardBk));
 
 //function that generates the cards in html format
 function generateCard(card) {
